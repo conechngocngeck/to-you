@@ -5,12 +5,11 @@ const MOCK_API_URL = "https://6a02c2ba0d92f63dd2540420.mockapi.io/address";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { latitude, longitude, address, content } = body;
+    const { latitude, longitude } = body;
 
     const payload = {
-      content:
-        content ||
-        `Vị trí: ${address || `${latitude}, ${longitude}`} | Tọa độ: ${latitude}, ${longitude}`,
+      latitude,
+      longitude,
     };
 
     const response = await fetch(MOCK_API_URL, {
