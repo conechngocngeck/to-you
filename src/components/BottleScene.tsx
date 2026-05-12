@@ -353,17 +353,7 @@ export default function BottleScene() {
         {sceneState === "denied" && (
           <div className={styles.deniedCard}>
             <div className={styles.deniedIcon}>🔒</div>
-            <h2 className={styles.deniedTitle}>Bạn đã chặn định vị</h2>
             <p className={styles.deniedSub}>Chiếc chai vẫn đứng yên... Lá thư chưa thể đến tay bạn.</p>
-            <div className={styles.instructions}>
-              <strong>Cách bật lại trong Chrome:</strong>
-              <ol>
-                <li>Nhấn 🔒 trên thanh địa chỉ</li>
-                <li>Chọn <b>Site settings</b></li>
-                <li><b>Location</b> → <b>Allow</b></li>
-                <li>Tải lại trang</li>
-              </ol>
-            </div>
             <button id="retry-btn" className={styles.retryBtn} onClick={() => window.location.reload()}>
               🔄 Thử lại
             </button>
