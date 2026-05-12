@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const MOCK_API_URL = "https://6a02c2ba0d92f63dd2540420.mockapi.io/address";
+export const MOCK_API_URL =
+  "https://6a02c2ba0d92f63dd2540420.mockapi.io/address";
 
 export async function POST(request: NextRequest) {
   try {
