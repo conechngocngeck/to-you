@@ -308,7 +308,7 @@ export default function BottleScene() {
         {sceneState === "requesting" && (
           <div className={styles.statusPill}>
             <span className={styles.spinner}/>
-            Đang xin quyền định vị...
+            ôi, chai thư đã lạc đường mất rồi, bạn hãy chỉ dẫn nó nhé 🗺️
           </div>
         )}
 
