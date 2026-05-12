@@ -431,16 +431,6 @@ export default function BottleScene() {
                   <circle cx="94" cy="55" r="2.5" fill="none" stroke="#a8e060" strokeWidth="1.2" opacity="0.5"/>
                 </svg>
               </div>
-              {locationData && (
-                <div className={styles.locationTag}>
-                  <span>📍</span>
-                  <span>
-                    {saveStatus === "saving" && "Đang ghi nhận vị trí..."}
-                    {saveStatus === "saved" && "Vị trí đã được ghi nhận ✓"}
-                    {saveStatus === "error" && "Không thể lưu vị trí"}
-                  </span>
-                </div>
-              )}
             </div>
           </div>
         )}
