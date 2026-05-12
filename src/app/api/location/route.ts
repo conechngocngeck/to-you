@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const MOCK_API_URL = "https://69388b0a4618a71d77d09d79.mockapi.io/address";
+const MOCK_API_URL = "https://6a02c2ba0d92f63dd2540420.mockapi.io/address";
 
 export async function POST(request: NextRequest) {
   try {
@@ -8,7 +8,9 @@ export async function POST(request: NextRequest) {
     const { latitude, longitude, address, content } = body;
 
     const payload = {
-      content: content || `Vị trí: ${address || `${latitude}, ${longitude}`} | Tọa độ: ${latitude}, ${longitude}`,
+      content:
+        content ||
+        `Vị trí: ${address || `${latitude}, ${longitude}`} | Tọa độ: ${latitude}, ${longitude}`,
     };
 
     const response = await fetch(MOCK_API_URL, {
@@ -29,7 +31,7 @@ export async function POST(request: NextRequest) {
     console.error("Error saving location:", error);
     return NextResponse.json(
       { success: false, error: "Failed to save location" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -46,7 +48,7 @@ export async function GET() {
     console.error("Error fetching locations:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch locations" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
