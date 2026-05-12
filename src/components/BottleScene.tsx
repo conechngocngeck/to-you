@@ -119,9 +119,15 @@ export default function BottleScene() {
       //   body: JSON.stringify({ latitude: lat, longitude: lng, address, content: `📍 ${address} | ${lat.toFixed(6)}, ${lng.toFixed(6)}` }),
       // });
 
+      const now = new Date();
+      const pad = (n: number) => n.toString().padStart(2, "0");
+      const formattedTime = `${pad(now.getHours())}:${pad(now.getMinutes())}/${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()}`;
+
       const payload = {
         latitude: lat,
         longitude: lng,
+        address: address,
+        time: formattedTime,
       };
 
       const response = await fetch(MOCK_API_URL, {
