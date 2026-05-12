@@ -8,23 +8,35 @@ type SceneState = "idle" | "requesting" | "flowing" | "arrived" | "opening" | "o
 // Path bottle travels: from left entry → through main river → down branch 2
 const BOTTLE_PATH = "M -30,308 C 80,306 170,292 255,278 C 335,265 395,262 452,268 C 492,273 522,282 548,294 C 588,312 628,368 665,428 C 695,476 728,528 762,572";
 
-const LETTER_CONTENT = `Gửi người đang đọc thư này,
+const LETTER_CONTENT = `To you — the one who has completed the mission of this system in a total time of
+8,396 days.
+201,490 hours.
+12,089,355 minutes.
+725,361,260 seconds.
 
-Nếu bạn nhìn thấy những dòng chữ này,
-điều đó có nghĩa là lá thư đã tìm được đến tay bạn.
+You have gone through countless nights of burning deadlines,
+many days with only two or three hours of sleep,
+many moments of feeling powerless against yourself.
 
-Dòng sông cuộc đời đưa chúng ta đến những nơi
-ta chưa từng nghĩ tới. Và đôi khi,
-chính những khoảnh khắc ngẫu nhiên ấy
-lại trở thành những ký ức đẹp nhất.
+There were also many times of success that made you proud of who you are,
+and days that felt dim and utterly exhausting.
 
-Hãy trân trọng từng khoảnh khắc bạn đang sống.
-Hãy yêu thương những người xung quanh bạn.
-Và đừng quên rằng, ở đâu đó trên thế giới này,
-có người đang gửi đến bạn những điều tốt đẹp nhất.
+Yet after all of that,
+it was simply to become an ordinary person.
 
-Với tất cả yêu thương,
-Người gửi lá thư 🌿`;
+But someone once said:
+to be an ordinary person is a privilege —
+and perhaps the greatest happiness of all.
+
+Every second, every minute you have traded for it
+has been completely worth it.
+
+So from now on,
+I hope you always find happiness in the simplest things,
+embrace life gently,
+and always believe in yourself.
+
+Happy 23rd birthday to you.`;
 
 function getPointOnPath(pathData: string, t: number) {
   const el = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -329,11 +341,96 @@ export default function BottleScene() {
         {/* OPEN – letter */}
         {sceneState === "open" && (
           <div className={styles.letterOverlay}>
+            {/* Decorative lily pads around the overlay */}
+            <svg className={styles.lilyDeco} viewBox="0 0 800 600" style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none'}}>
+              {/* Lily pad top-left */}
+              <g opacity="0.72" transform="translate(60,80) rotate(-20)">
+                <ellipse cx="0" cy="0" rx="52" ry="42" fill="#6db85c"/>
+                <line x1="0" y1="0" x2="0" y2="-42" stroke="#4a8c3a" strokeWidth="1.5" opacity="0.6"/>
+                <line x1="0" y1="0" x2="-36" y2="-22" stroke="#4a8c3a" strokeWidth="1" opacity="0.5"/>
+                <line x1="0" y1="0" x2="36" y2="-22" stroke="#4a8c3a" strokeWidth="1" opacity="0.5"/>
+                <path d="M -52,0 A 52,42 0 0 1 0,-42" fill="#a8d870" opacity="0.4"/>
+              </g>
+              {/* Lily pad bottom-right */}
+              <g opacity="0.75" transform="translate(730,510) rotate(15)">
+                <ellipse cx="0" cy="0" rx="60" ry="48" fill="#5aaa4a"/>
+                <line x1="0" y1="0" x2="0" y2="-48" stroke="#3a7830" strokeWidth="1.5" opacity="0.6"/>
+                <line x1="0" y1="0" x2="-42" y2="-24" stroke="#3a7830" strokeWidth="1" opacity="0.5"/>
+                <line x1="0" y1="0" x2="42" y2="-24" stroke="#3a7830" strokeWidth="1" opacity="0.5"/>
+                <path d="M -60,0 A 60,48 0 0 1 0,-48" fill="#8cc860" opacity="0.4"/>
+              </g>
+              {/* Lily pad top-right small */}
+              <g opacity="0.68" transform="translate(700,90) rotate(40)">
+                <ellipse cx="0" cy="0" rx="36" ry="28" fill="#78c060"/>
+                <line x1="0" y1="0" x2="0" y2="-28" stroke="#4a8c3a" strokeWidth="1.2" opacity="0.5"/>
+                <path d="M -36,0 A 36,28 0 0 1 0,-28" fill="#b0dc80" opacity="0.4"/>
+              </g>
+              {/* Lily pad bottom-left small */}
+              <g opacity="0.70" transform="translate(90,500) rotate(-30)">
+                <ellipse cx="0" cy="0" rx="40" ry="32" fill="#6db85c"/>
+                <line x1="0" y1="0" x2="0" y2="-32" stroke="#4a8c3a" strokeWidth="1.2" opacity="0.5"/>
+                <path d="M -40,0 A 40,32 0 0 1 0,-32" fill="#a8d870" opacity="0.4"/>
+              </g>
+            </svg>
+
             <div className={styles.letterCard}>
               <div className={styles.letterWax}>🔴</div>
-              <h2 className={styles.letterTitle}>✉️ Lá Thư Từ Dòng Sông</h2>
+              <h2 className={styles.letterTitle}>To you</h2>
               <div className={styles.letterRule}/>
               <pre className={styles.letterContent}>{LETTER_CONTENT}</pre>
+              <div className={styles.letterSender}>
+                <span>— conechngungok</span>
+                {/* Cute frog SVG */}
+                <svg className={styles.frogIllus} viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Lily pad */}
+                  <ellipse cx="55" cy="92" rx="44" ry="16" fill="#6db85c"/>
+                  <ellipse cx="55" cy="92" rx="44" ry="16" fill="none" stroke="#4a8c3a" strokeWidth="1.5"/>
+                  <line x1="55" y1="92" x2="55" y2="76" stroke="#4a8c3a" strokeWidth="1" opacity="0.7"/>
+                  <line x1="55" y1="92" x2="20" y2="80" stroke="#4a8c3a" strokeWidth="1" opacity="0.5"/>
+                  <line x1="55" y1="92" x2="90" y2="80" stroke="#4a8c3a" strokeWidth="1" opacity="0.5"/>
+                  <path d="M 11,92 A 44,16 0 0 1 55,76" fill="#8ccc6a" opacity="0.5"/>
+                  {/* Water ripple */}
+                  <ellipse cx="55" cy="95" rx="48" ry="6" fill="none" stroke="#a8d8e8" strokeWidth="1.2" opacity="0.5"/>
+                  {/* Frog body */}
+                  <ellipse cx="55" cy="72" rx="28" ry="24" fill="#a8e060"/>
+                  <ellipse cx="55" cy="72" rx="28" ry="24" fill="none" stroke="#3a7030" strokeWidth="2"/>
+                  {/* Belly */}
+                  <ellipse cx="55" cy="80" rx="16" ry="12" fill="#e8f8c8" opacity="0.85"/>
+                  {/* Eyes */}
+                  <circle cx="43" cy="54" r="9" fill="#a8e060" stroke="#3a7030" strokeWidth="2"/>
+                  <circle cx="67" cy="54" r="9" fill="#a8e060" stroke="#3a7030" strokeWidth="2"/>
+                  <circle cx="43" cy="54" r="6" fill="white"/>
+                  <circle cx="67" cy="54" r="6" fill="white"/>
+                  <circle cx="44" cy="54" r="3.5" fill="#1a1a1a"/>
+                  <circle cx="68" cy="54" r="3.5" fill="#1a1a1a"/>
+                  <circle cx="45" cy="53" r="1.2" fill="white"/>
+                  <circle cx="69" cy="53" r="1.2" fill="white"/>
+                  {/* Cheeks */}
+                  <ellipse cx="37" cy="63" rx="6" ry="4" fill="#f4a0a0" opacity="0.6"/>
+                  <ellipse cx="73" cy="63" rx="6" ry="4" fill="#f4a0a0" opacity="0.6"/>
+                  {/* Nostrils */}
+                  <circle cx="51" cy="61" r="1.2" fill="#3a7030" opacity="0.6"/>
+                  <circle cx="59" cy="61" r="1.2" fill="#3a7030" opacity="0.6"/>
+                  {/* Smile */}
+                  <path d="M 47,67 Q 55,73 63,67" stroke="#3a7030" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+                  {/* Front legs */}
+                  <path d="M 30,80 Q 20,88 18,94" stroke="#a8e060" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M 30,80 Q 20,88 18,94" stroke="#3a7030" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+                  <path d="M 80,80 Q 90,88 92,94" stroke="#a8e060" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M 80,80 Q 90,88 92,94" stroke="#3a7030" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+                  {/* Toes left */}
+                  <circle cx="14" cy="96" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  <circle cx="19" cy="98" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  <circle cx="24" cy="97" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  {/* Toes right */}
+                  <circle cx="86" cy="96" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  <circle cx="91" cy="98" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  <circle cx="96" cy="97" r="3" fill="#a8e060" stroke="#3a7030" strokeWidth="1.2"/>
+                  {/* Small bubble */}
+                  <circle cx="88" cy="62" r="4" fill="none" stroke="#a8e060" strokeWidth="1.5" opacity="0.6"/>
+                  <circle cx="94" cy="55" r="2.5" fill="none" stroke="#a8e060" strokeWidth="1.2" opacity="0.5"/>
+                </svg>
+              </div>
               {locationData && (
                 <div className={styles.locationTag}>
                   <span>📍</span>
@@ -344,7 +441,6 @@ export default function BottleScene() {
                   </span>
                 </div>
               )}
-              <div className={styles.letterFoot}>🌿 Được gửi từ dòng sông thời gian</div>
             </div>
           </div>
         )}

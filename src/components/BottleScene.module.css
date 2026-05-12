@@ -239,6 +239,7 @@
   max-height: 88vh;
   overflow-y: auto;
   position: relative;
+  z-index: 1;
   box-shadow:
     0 2px 0 #d4a373,
     0 20px 60px rgba(0,0,0,0.3),
@@ -285,10 +286,11 @@
 .letterTitle {
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #5c3d1e;
   text-align: center;
   position: relative;
+  letter-spacing: 0.5px;
 }
 
 .letterRule {
@@ -311,11 +313,51 @@
 
 .letterContent {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.95;
+  font-size: 0.92rem;
+  line-height: 1.9;
   color: #3d2010;
   white-space: pre-wrap;
   position: relative;
+}
+
+/* Sender row with frog */
+.letterSender {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 12px;
+  position: relative;
+}
+
+.letterSender > span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #5c3d1e;
+  padding-top: 8px;
+}
+
+.frogIllus {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+  animation: frogBob 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(60,120,40,0.18));
+}
+
+@keyframes frogBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Lily pad decorations */
+.lilyDeco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .locationTag {
